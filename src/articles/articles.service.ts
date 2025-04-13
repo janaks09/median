@@ -20,8 +20,9 @@ export class ArticlesService {
   }
 
   findOne(id: number) {
-    return this.prismaService.article.findUnique({
+    return this.prismaService.article.findUniqueOrThrow({
       where: { id },
+      include: { author: true },
     });
   }
 
